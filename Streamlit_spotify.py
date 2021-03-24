@@ -17,8 +17,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import streamlit.components.v1 as components
 
-user_id = 'kontourkelly'
-playlist_id='1TPrIjZTwk2QV2BfuOJvjN'
 
 # GETTING USER INPUT 
 st.title(""" Spotify Optimal Flow Playlist  """)
@@ -34,11 +32,10 @@ components.iframe(src="https://open.spotify.com/embed/playlist/"+playlist_id, wi
 
 # from spotipy.oauth2 import SpotifyClientCredentials
 
+import os
 # backend getting tokens
-client_id = 'd808e97a10d04cbea67b1ef55b2ed1e3'
-client_secret = '579b893f45d74f019bdb84b30e0d34d2'
-# client_credentials_manager = SpotifyClientCredentials(client_id, client_secret)
-# sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+client_id = os.environ.get("client_id")
+client_secret = os.environ.get('client_secret')
 
 
 client_creds = f'{client_id}:{client_secret}'
@@ -60,8 +57,7 @@ access_token = data['access_token']
 sp = spotipy.Spotify(auth = access_token)
 ############################################################
 
-playlist_id='1TPrIjZTwk2QV2BfuOJvjN'
-user_id='kontourkelly'
+
 # Get audio features of all the songs in the playlist 
 def getPlaylistAudioFeatures(sp, user_id, playlist_id):
     songs = []
