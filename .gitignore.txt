@@ -1,2 +1,2 @@
 .DS_store
-config.py
+.config.py
