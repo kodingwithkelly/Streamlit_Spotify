@@ -32,10 +32,10 @@ components.iframe(src="https://open.spotify.com/embed/playlist/"+playlist_id, wi
 
 # from spotipy.oauth2 import SpotifyClientCredentials
 
-import os
+import sys
 # backend getting tokens
-client_id = os.environ.get("client_id")
-client_secret = os.environ.get('client_secret')
+client_id = config.client_id
+client_secret = config.client_secret
 
 
 client_creds = f'{client_id}:{client_secret}'
