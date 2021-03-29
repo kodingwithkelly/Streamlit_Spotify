@@ -29,13 +29,16 @@ playlist_id= st.text_input("Please enter the Spotify playlist uri you wish to re
 # Shows playlist
 components.iframe(src="https://open.spotify.com/embed/playlist/"+playlist_id, width=700, height=380, scrolling=False)
 
-
 # from spotipy.oauth2 import SpotifyClientCredentials
 
-import sys
+# import sys
+# sys.path.append('/Users/kellylam/streamlit_spotify/')
+# from config import client_id, client_secret
 # backend getting tokens
-client_id = config.client_id
-client_secret = config.client_secret
+import os
+
+client_id = os.getenv("client_id")
+client_secret = os.getenv("client_secret")
 
 
 client_creds = f'{client_id}:{client_secret}'
