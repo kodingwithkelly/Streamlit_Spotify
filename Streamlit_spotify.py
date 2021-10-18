@@ -136,7 +136,7 @@ def getGenre(artist_ids):
     ids = []
     for i in artist_ids:
         item = sp.artist(i) # Spotify's function
-        ids.append(item['genres'][0])
+        ids.append(item['genres'])
     return pd.DataFrame(ids) 
 
 
@@ -146,7 +146,7 @@ def getGenre(artist_ids):
 audioF = getPlaylistAudioFeatures(sp, user_id, playlist_id)
 track_names = showTracks(user_id, playlist_id)
 artist_ids = getArtistID(user_id, playlist_id)
-genres = getGenre(artist_ids)
+genres = getGenre(artist_ids)[0]
 # Merging DFs
 audioF['Genre'] = genres
 audioF['Song'] = track_names['Song']
